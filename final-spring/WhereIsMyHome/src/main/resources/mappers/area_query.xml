@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycom.myapp.area.dao.AreaDao">
+    <insert id="areaInsert" parameterType="com.mycom.myapp.area.dto.AreaDto">
+        INSERT INTO AREA ( USER_ID, AREA_NUMBER )
+        VALUES ( #{userId}, #{areaNumber} )
+    </insert>
+
+    <select id="getAreas" parameterType="long" resultType="com.mycom.myapp.area.dto.AreaDto">
+        SELECT USER_ID, AREA_NUMBER
+        FROM AREA
+        WHERE USER_ID = #{userId}
+    </select>
+
+    <select id="getGugunName" parameterType="int" resultType="string">
+        SELECT CONCAT(s.NAME, ' ', g.NAME) as NAME
+        FROM SIDO_CODE s, GUGUN_CODE g
+        WHERE s.CODE = g.SIDO_CODE AND g.CODE = #{code};
+    </select>
+</mapper>

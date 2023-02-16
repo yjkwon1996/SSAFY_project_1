@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.mycom.myapp.address.dao.AddressDao">
+
+	<select id="sidoList" resultType="com.mycom.myapp.address.dto.SidoDto">
+		select code, name
+		  from sido_code;
+	</select>
+	
+	<select id="gugunList" parameterType="string" resultType="com.mycom.myapp.address.dto.GugunDto">
+		select code, name
+		  from gugun_code
+		 where sido_code = #{sidoCode}
+		 order by name;		  
+	</select>
+
+</mapper>
